@@ -1,17 +1,36 @@
 * {
   box-sizing: border-box;
 }
+
+body {
+  width: 100%;
+  height: auto;
+  background: #0099e4;
+}
+
 #app {
   max-width: 640px;
   margin: 0 auto;
+  color: #fff;
 }
+
+h1 {
+  font-style: italic;
+  text-align: center;
+}
+
+.select-status {
+  text-align: center;
+}
+
 table {
+  margin-top: 50px;
   width: 100%;
   border-collapse: collapse;
 }
 thead th {
-  border-bottom: 2px solid #0099e4; /*#d31c4a */
-  color: #0099e4;
+  border-bottom: 2px solid #fff; /*#d31c4a */
+  color: #fff;
 }
 th,
 th {
@@ -42,14 +61,30 @@ tbody tr.done th {
 }
 tbody tr:hover td,
 tbody tr:hover th {
-  background: #f4fbff;
 }
+
+.task {
+  cursor: pointer;
+}
+
+.update-form {
+  font-size: 16px;
+  width: 400px;
+}
+
 button {
   border: none;
   border-radius: 20px;
   line-height: 24px;
   padding: 0 8px;
-  background: #0099e4;
-  color: #fff;
+  color: #0099e4;
+  background: #fff;
   cursor: pointer;
+}
+
+.add-form input {
+  width: 500px;
+  height: 40px;
+  margin-right: 5px;
+  font-size: 14px;
 }

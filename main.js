@@ -43,6 +43,9 @@ const app = new Vue({
     this.todos = todoStorage.fetch()
   },
   methods: {
+    updateTask: function(item) {
+      item.updating = !item.updating
+    },
     doAdd: function(event, value) {
       var comment = this.$refs.comment
       if (!comment.value.length) {
@@ -51,7 +54,8 @@ const app = new Vue({
       this.todos.push({
         id: todoStorage.uid++,
         comment: comment.value,
-        state: 0
+        state: 0,
+        updating: true
       })
       comment.value = ''
     },

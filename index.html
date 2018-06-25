@@ -8,26 +8,30 @@
   <body>
     <div id="app">
       <h1>ToDo List</h1>
-      <label v-for="label in options">
-        <input type="radio"
-          v-model="current"
-          v-bind:value="label.value">{{ label.label }}
-      </label>
-      {{ computedTodos.length }} 件を表示中
+      <div class="select-status">
+        <label v-for="label in options">
+          <input type="radio"
+            v-model="current"
+            v-bind:value="label.value">{{ label.label }}
+        </label>
+        {{ computedTodos.length }} 件を表示中
+      </div>
       <table>
-        <!-- テーブルヘッダー -->
         <thead>
           <tr>
             <th class="id">ID</th>
-            <th class="comment">コメント</th>
-            <th class="state">状態</th>
+            <th class="comment">Task</th>
+            <th class="state">Status</th>
             <th class="button">-</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="item in computedTodos" v-bind:key="item.id">
             <th>{{ item.id }}</th>
-            <td>{{ item.comment }}</td>
+            <td class="task" v-if="item.updating" v-on:click="updateTask(item)">{{ item.comment }}</td>
+            <td v-else>
+              <input class="update-form" v-on:keydown.enter="updateTask(item)" type="text" v-model="item.comment">
+            </td>
             <td class="state">
               <button v-on:click="doChangeState(item)">{{ labels[item.state] }}</button>
             </td>
@@ -37,9 +41,9 @@
           </tr>
         </tbody>
       </table>
-      <h2>New Task</h2>
+      <h4>Add New Task</h4>
       <form class="add-form" v-on:submit.prevent="doAdd">
-        コメント<input type="text" ref="comment">
+        <input type="text" ref="comment">
         <button type="submit">追加</button>
       </form>
     </div>
