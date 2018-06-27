@@ -1,0 +1,5 @@
+# force_ssl redirect
+https://miyarappo-forked-hoge.netlify.com/* https://m.pyar.bz/:splat 301!
+
+# SPA Routing
+/*  /index.html 200
